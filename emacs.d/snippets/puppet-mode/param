@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name : param
+# key : =
+# contributor : Konrad Scherer
+# --
+=> '$1';

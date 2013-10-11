@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name : file
+# key : fi
+# contributor : Konrad Scherer
+# --
+file {
+  '$1':
+    ensure => $2,
+    source => 'puppet:///modules/$3';
+}

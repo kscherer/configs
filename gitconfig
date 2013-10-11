@@ -1,0 +1,29 @@
+[user]
+    name = Konrad Scherer
+    email = Konrad.Scherer@windriver.com
+[diff]
+    renamelimit = 0
+[sendemail]
+    smtpserver = prod-webmail.wrs.com
+    from = Konrad Scherer <konrad.scherer@windriver.com>
+    suppresscc = all
+[commit]
+    signoff = true
+[format]
+    signoff = true
+[help]
+    autocorrect = 1
+[wrgit]
+    username = kscherer
+    autoupdate = true
+[color]
+    ui = true
+[alias]
+    log1 = log --pretty=oneline --abbrev-commit --decorate
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lgn = "!f() { git log --graph --pretty=format:'%Cred%H%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --date=relative $@ | git name-rev --stdin --name-only ; } ; f"    
+    amend = commit --amend -C HEAD
+[core]
+	pager = less -x1,5
+[push]
+	default = simple

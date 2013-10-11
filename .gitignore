@@ -1,0 +1,6 @@
+*.#*
+*.elc
+*.tex
+*.pdf
+*.html
+repl-port

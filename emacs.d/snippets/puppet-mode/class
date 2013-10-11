@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name : class
+# key : class
+# contributor : Konrad Scherer
+# --
+class $1 {
+  $0
+}
