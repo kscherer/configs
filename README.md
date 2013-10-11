@@ -1,5 +1,8 @@
 # Configs
 
 emacs config which uses el-get.
+
 bashrc with my crazy prompt
-I am still trying to integrate tmux into my workflow
+
+I am still trying to integrate tmux into my workflow so don't look at
+the tmix configuration to closely
