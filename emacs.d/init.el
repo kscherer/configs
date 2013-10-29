@@ -11,7 +11,7 @@
                          '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
   )
 
-;(toggle-fullscreen)
+(toggle-fullscreen)
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
@@ -34,10 +34,10 @@
                 org-mode puppet-mode smex highlight-symbol tabbar
                 undo-tree yasnippet fastnav rfringe flymake-cursor
                 edit-server ledger-mode color-theme-solarized expand-region
-                key-chord pp-c-l emacs-goodies-el yaml-mode multiple-cursors
-                ace-jump-mode clojure-mode s ac-nrepl nrepl
+                key-chord pp-c-l yaml-mode multiple-cursors
+                ace-jump-mode clojure-mode s ac-nrepl cider
                 paredit rainbow-delimiters markdown-mode flx helm
-                ido-ubiquitous
+                ido-ubiquitous cl-lib git-modes
                 )
        (mapcar 'el-get-source-name el-get-sources)))
 
