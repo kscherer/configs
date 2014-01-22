@@ -37,7 +37,7 @@
                 key-chord pp-c-l yaml-mode multiple-cursors
                 ace-jump-mode clojure-mode s ac-nrepl cider
                 paredit rainbow-delimiters markdown-mode flx helm
-                ido-ubiquitous cl-lib git-modes
+                ido-ubiquitous cl-lib git-modes jedi
                 )
        (mapcar 'el-get-source-name el-get-sources)))
 
