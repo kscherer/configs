@@ -71,10 +71,15 @@ file corresponding to the current buffer file, then recompile the file."
   (rainbow-delimiters-mode 1)
   )
 
+(defun kms:python-mode-hook ()
+  (kms:default-mode-hook)
+  (jedi:setup)
+  )
+
 (add-hook 'emacs-lisp-mode-hook 'kms:emacs-lisp-mode-hook)
 (add-hook 'puppet-mode-hook 'kms:puppet-mode-hook)
 (add-hook 'sh-mode-hook 'kms:shell-mode-hook)
-(add-hook 'python-mode-hook 'kms:default-mode-hook)
+(add-hook 'python-mode-hook 'kms:python-mode-hook)
 (add-hook 'ruby-mode-hook 'kms:default-mode-hook)
 (add-hook 'org-mode-hook 'kms:base-minor-modes-hook)
 (add-hook 'markdown-mode-hook 'kms:markdown-mode-hook)
