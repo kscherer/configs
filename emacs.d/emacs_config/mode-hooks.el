@@ -76,6 +76,20 @@ file corresponding to the current buffer file, then recompile the file."
   (jedi:setup)
   )
 
+(defun kms:cpp-mode-hook ()
+  (kms:default-mode-hook)
+  ; style I want to use in c++ mode
+  (c-add-style "kms-style"
+               '("stroustrup"
+                 (indent-tabs-mode . nil)
+                 (c-basic-offset . 4) ))
+
+  (c-set-style "my-style")        ; use my-style defined above
+  (auto-fill-mode)
+  (c-toggle-electric-state -1)
+  (c-toggle-auto-hungry-state 1)
+  )
+
 (add-hook 'emacs-lisp-mode-hook 'kms:emacs-lisp-mode-hook)
 (add-hook 'puppet-mode-hook 'kms:puppet-mode-hook)
 (add-hook 'sh-mode-hook 'kms:shell-mode-hook)
@@ -84,3 +98,4 @@ file corresponding to the current buffer file, then recompile the file."
 (add-hook 'org-mode-hook 'kms:base-minor-modes-hook)
 (add-hook 'markdown-mode-hook 'kms:markdown-mode-hook)
 (add-hook 'clojure-mode-hook 'kms:clojure-mode-hook)
+(add-hook 'c++-mode-hook 'kms:cpp-mode-hook)
