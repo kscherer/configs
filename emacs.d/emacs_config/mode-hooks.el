@@ -36,18 +36,14 @@
 
 (defun kms:puppet-mode-hook ()
   (kms:default-mode-hook)
-  (require 'flymake-puppet)
-  (flymake-puppet-load)
-  (local-set-key (kbd "C-`") 'flymake-goto-next-error)
+  (flycheck-mode 1)
   (local-set-key (kbd "C-M-=" ) 'kms:align-string-equals)
   (setq ac-sources (append '(ac-source-yasnippet) ac-sources))
   )
 
 (defun kms:shell-mode-hook ()
   (kms:default-mode-hook)
-  (require 'flymake-shell)
-  (flymake-shell-load)
-  (local-set-key (kbd "C-`") 'flymake-goto-next-error)
+  (flycheck-mode 1)
   (make-local-variable 'ac-ignores)
   (add-to-list 'ac-ignores "fi")
   )
@@ -62,6 +58,7 @@ file corresponding to the current buffer file, then recompile the file."
 
 (defun kms:emacs-lisp-mode-hook ()
   (kms:default-mode-hook)
+  (flycheck-mode 1)
   (add-hook 'after-save-hook 'auto-byte-recompile)
   )
 
@@ -73,18 +70,20 @@ file corresponding to the current buffer file, then recompile the file."
 
 (defun kms:python-mode-hook ()
   (kms:default-mode-hook)
+  (flycheck-mode 1)
   (jedi:setup)
   )
 
 (defun kms:cpp-mode-hook ()
   (kms:default-mode-hook)
+  (flycheck-mode 1)
   ; style I want to use in c++ mode
   (c-add-style "kms-style"
                '("stroustrup"
                  (indent-tabs-mode . nil)
                  (c-basic-offset . 4) ))
 
-  (c-set-style "my-style")        ; use my-style defined above
+  (c-set-style "kms-style")        ; use my-style defined above
   (auto-fill-mode)
   (c-toggle-electric-state -1)
   (c-toggle-auto-hungry-state 1)

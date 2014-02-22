@@ -32,7 +32,7 @@
       (append
        '(el-get auto-complete autopair el-get goto-last-change magit
                 org-mode puppet-mode smex highlight-symbol tabbar
-                undo-tree yasnippet fastnav rfringe flymake-cursor
+                undo-tree yasnippet fastnav rfringe flycheck
                 edit-server ledger-mode color-theme-solarized expand-region
                 key-chord pp-c-l yaml-mode multiple-cursors
                 ace-jump-mode clojure-mode s ac-nrepl cider
@@ -71,7 +71,6 @@
                         "mode-hooks.el"
                         "global-keys.el"
                         "global_abbrev.el"
-                        "flymake.el"
                         "clean-mode-line.el"
                         "ido-goto-symbol.el"
                         "toggle-quotes.el"
