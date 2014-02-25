@@ -87,6 +87,8 @@ file corresponding to the current buffer file, then recompile the file."
   (auto-fill-mode)
   (c-toggle-electric-state -1)
   (c-toggle-auto-hungry-state 1)
+  (setq ac-sources '(ac-source-clang-async))
+  (ac-clang-launch-completion-process)
   )
 
 (add-hook 'emacs-lisp-mode-hook 'kms:emacs-lisp-mode-hook)
@@ -98,3 +100,5 @@ file corresponding to the current buffer file, then recompile the file."
 (add-hook 'markdown-mode-hook 'kms:markdown-mode-hook)
 (add-hook 'clojure-mode-hook 'kms:clojure-mode-hook)
 (add-hook 'c++-mode-hook 'kms:cpp-mode-hook)
+
+(provide 'mode-hooks)
