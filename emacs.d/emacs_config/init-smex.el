@@ -1,5 +1,6 @@
-(smex-initialize)
 (setq smex-save-file "~/.emacs.d/.smex-items")
+(setq smex-history-length 20)
+(smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "<menu>") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
