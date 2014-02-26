@@ -1,4 +1,3 @@
-
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
                                         ;(define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
@@ -41,3 +40,10 @@
 
 ;; enable exporters for org-mode
 (setq org-export-backends (quote (beamer html)))
+
+;; enable plantuml babel backend
+(require 'ob-plantuml)
+(setq org-plantuml-jar-path "/home/kscherer/bin/plantuml.jar")
+(defun my-org-confirm-babel-evaluate (lang body)
+  (not (string= lang "plantuml")))
+(setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
