@@ -31,18 +31,18 @@ shopt -s histreedit
 #attempt to force write of history on shell exit
 trap 'history -w' EXIT
 
-if [ ! -e $HOME/.history  ]; then
-    mkdir -p $HOME/.history
+if [ ! -e "$HOME/.history"  ]; then
+    mkdir -p "$HOME/.history"
 fi
 
 #make a history file for each tty
-this_tty=`tty`
-this_tty=`basename $this_tty`
+this_tty=$(tty)
+this_tty=$(basename "$this_tty")
 export HISTFILE=~/.history/bash_history.$HOSTNAME.$this_tty
 
 #make sure the history file exists
-if [ ! -e $HISTFILE  ]; then
-    touch $HISTFILE
+if [ ! -e "$HISTFILE"  ]; then
+    touch "$HISTFILE"
 fi
 
 # check the window size after each command and, if necessary,
@@ -54,7 +54,11 @@ shopt -s checkwinsize
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    if [ -r ~/.dircolors ]; then
+        eval "$(dircolors -b ~/.dircolors)"
+    else
+        eval "$(dircolors -b)"
+    fi
 fi
 
 # Find a file with a pattern in name:
@@ -69,19 +73,19 @@ function fe()
 
 function extract()      # Handy Extract Program.
 {
-     if [ -f $1 ] ; then
+     if [ -f "$1" ] ; then
          case $1 in
-             *.tar.bz2)   tar xvjf $1     ;;
-             *.tar.gz)    tar xvzf $1     ;;
-             *.bz2)       bunzip2 $1      ;;
-             *.rar)       unrar x $1      ;;
-             *.gz)        gunzip $1       ;;
-             *.tar)       tar xvf $1      ;;
-             *.tbz2)      tar xvjf $1     ;;
-             *.tgz)       tar xvzf $1     ;;
-             *.zip)       unzip $1        ;;
-             *.Z)         uncompress $1   ;;
-             *.7z)        7z x $1         ;;
+             *.tar.bz2)   tar xvjf "$1"     ;;
+             *.tar.gz)    tar xvzf "$1"     ;;
+             *.bz2)       bunzip2 "$1"      ;;
+             *.rar)       unrar x "$1"      ;;
+             *.gz)        gunzip "$1"       ;;
+             *.tar)       tar xvf "$1"      ;;
+             *.tbz2)      tar xvjf "$1"     ;;
+             *.tgz)       tar xvzf "$1"     ;;
+             *.zip)       unzip "$1"        ;;
+             *.Z)         uncompress "$1"   ;;
+             *.7z)        7z x "$1"         ;;
              *)           echo "'$1' cannot be extracted via >extract<" ;;
          esac
      else
@@ -93,7 +97,7 @@ function extract()      # Handy Extract Program.
 # Process/system related functions:
 #-------------------------------------------------------------
 
-function my_ps() { ps $@ -u $USER -o pid,command ; }
+function my_ps() { ps "$@" -u "$USER" -o pid,command ; }
 function pp() { my_ps f | awk '!/awk/ && $0~var' var=${1:-".*"} ; }
 
 function killps()                 # Kill by process name.
@@ -105,9 +109,9 @@ function killps()                 # Kill by process name.
     fi
     if [ $# = 2 ]; then sig=$1 ; fi
     for pid in $(my_ps| awk '!/awk/ && $0~pat { print $1 }' pat=${!#} ) ; do
-        pname=$(my_ps | awk '$1~var { print $5 }' var=$pid )
+        pname=$(my_ps | awk '$1~var { print $5 }' var="$pid" )
         if ask "Kill process $pid <$pname> with signal $sig?"
-            then kill $sig $pid
+            then kill "$sig" "$pid"
         fi
     done
 }
@@ -120,7 +124,7 @@ function killps()                 # Kill by process name.
 #on a server enabled emacs
 function edit()
 {
-    local FILE=$(readlink -f $1)
+    local FILE=$(readlink -f "$1")
     if [ -n "$SSH_CONNECTION" ]; then
         local REMOTEUSER=kscherer
         local REMOTEIP=$(echo ${SSH_CONNECTION} | cut -d" " -f 1)
@@ -134,7 +138,7 @@ function edit()
         echo "Connecting to $EMACS_SERVER as $ME"
         ssh $EMACS_SERVER emacsclient -n /$ME:$FILE
     else
-        echo '$EMACS_SERVER is not set'
+        echo "$EMACS_SERVER is not set"
     fi
 }
 
@@ -174,7 +178,7 @@ function fn_exists()
 }
 
 #search through all the per tty history files
-function hg() { grep $1 ~/.history/*; }
+function hg() { grep "$1" ~/.history/*; }
 
 #full process grep
 function pg() {
@@ -189,9 +193,9 @@ function pg() {
 #delete the offending line from the known hosts file
 function sshhostrm()
 {
-    for arg in $*
+    for arg in "$@"
     do
-        ssh-keygen -f "$HOME/.ssh/known_hosts" -R $arg
+        ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$arg"
     done
 }
 
@@ -240,7 +244,7 @@ cb() {
 # http://justinchouinard.com/blog/2010/04/10/fix-stale-ssh-environment-variables-in-gnu-screen-and-tmux/
 function r() {
     if [[ -n $TMUX ]]; then
-        NEW_SSH_AUTH_SOCK=`tmux showenv|grep ^SSH_AUTH_SOCK|cut -d = -f 2`
+        NEW_SSH_AUTH_SOCK=$(tmux showenv|grep ^SSH_AUTH_SOCK|cut -d = -f 2)
         if [[ -n $NEW_SSH_AUTH_SOCK ]] && [[ -S $NEW_SSH_AUTH_SOCK ]]; then
             SSH_AUTH_SOCK=$NEW_SSH_AUTH_SOCK
         fi
@@ -253,7 +257,7 @@ function mcd() {
 }
 
 # Add sudo to last command or current commands
-s(){
+function s() {
     if [[ $# == 0 ]]; then
         sudo $(history -p '!!')
     else
@@ -263,10 +267,10 @@ s(){
 
 servedir(){
     port=8080
-    if [ $1 -gt 70 ]; then
+    if [ "$1" -gt 70 ]; then
         port=$1
     fi
-    python -m SimpleHTTPServer $port
+    python -m SimpleHTTPServer "$port"
 }
 
 # Used to simplify logging into my vms
@@ -467,6 +471,6 @@ fi
 export PROMPT_COMMAND=setTruncatedPwd
 setPrompt
 
-if [[ ! "${PATH}" =~ "$HOME/bin" ]]; then
+if [[ ! "${PATH}" =~ $HOME/bin ]]; then
     export PATH="$HOME/bin:${PATH}"
 fi
