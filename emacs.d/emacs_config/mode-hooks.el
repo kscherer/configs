@@ -72,6 +72,9 @@ file corresponding to the current buffer file, then recompile the file."
   (kms:default-mode-hook)
   (flycheck-mode 1)
   (jedi:setup)
+  (setq autopair-handle-action-fns
+        (list #'autopair-default-handle-action
+              #'autopair-python-triple-quote-action))
   )
 
 (defun kms:cpp-mode-hook ()
