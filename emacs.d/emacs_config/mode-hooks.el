@@ -8,8 +8,8 @@
 
 (defun kms:default-mode-hook ()
   (kms:base-minor-modes-hook)
-  (auto-complete-mode 1)
-  (local-set-key (kbd "<C-tab>" ) 'auto-complete)
+  (company-mode 1)
+  (local-set-key (kbd "<C-tab>" ) 'company-complete)
   (hl-line-mode 1)
   (visual-line-mode 1)
   (yas-minor-mode 1)
@@ -19,8 +19,8 @@
 
 (defun kms:markdown-mode-hook ()
   (kms:base-minor-modes-hook)
-  (auto-complete-mode 1)
-  (local-set-key (kbd "<C-tab>" ) 'auto-complete)
+  (company-mode 1)
+  (local-set-key (kbd "<C-tab>" ) 'company-complete)
   (visual-line-mode 1)
   (autopair-mode 1)
   (flyspell-mode 1)
@@ -38,14 +38,11 @@
   (kms:default-mode-hook)
   (flycheck-mode 1)
   (local-set-key (kbd "C-M-=" ) 'kms:align-string-equals)
-  (setq ac-sources (append '(ac-source-yasnippet) ac-sources))
   )
 
 (defun kms:shell-mode-hook ()
   (kms:default-mode-hook)
   (flycheck-mode 1)
-  (make-local-variable 'ac-ignores)
-  (add-to-list 'ac-ignores "fi")
   )
 
 (defun auto-byte-recompile ()
@@ -71,7 +68,6 @@ file corresponding to the current buffer file, then recompile the file."
 (defun kms:python-mode-hook ()
   (kms:default-mode-hook)
   (flycheck-mode 1)
-  (jedi:setup)
   (setq autopair-handle-action-fns
         (list #'autopair-default-handle-action
               #'autopair-python-triple-quote-action))
@@ -90,8 +86,13 @@ file corresponding to the current buffer file, then recompile the file."
   (auto-fill-mode)
   (c-toggle-electric-state -1)
   (c-toggle-auto-hungry-state 1)
-  (setq ac-sources '(ac-source-clang-async))
-  (ac-clang-launch-completion-process)
+  )
+
+(defun kms:org-mode-hook ()
+  (kms:base-minor-modes-hook)
+  (company-mode 1)
+  (local-set-key (kbd "<C-tab>" ) 'company-complete)
+  (flyspell-mode 1)
   )
 
 (add-hook 'emacs-lisp-mode-hook 'kms:emacs-lisp-mode-hook)
@@ -99,7 +100,7 @@ file corresponding to the current buffer file, then recompile the file."
 (add-hook 'sh-mode-hook 'kms:shell-mode-hook)
 (add-hook 'python-mode-hook 'kms:python-mode-hook)
 (add-hook 'ruby-mode-hook 'kms:default-mode-hook)
-(add-hook 'org-mode-hook 'kms:base-minor-modes-hook)
+(add-hook 'org-mode-hook 'kms:org-modes-hook)
 (add-hook 'markdown-mode-hook 'kms:markdown-mode-hook)
 (add-hook 'clojure-mode-hook 'kms:clojure-mode-hook)
 (add-hook 'c++-mode-hook 'kms:cpp-mode-hook)

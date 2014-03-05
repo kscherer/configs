@@ -30,14 +30,14 @@
 
 (setq my-packages
       (append
-       '(el-get auto-complete autopair el-get goto-last-change magit
+       '(el-get autopair el-get goto-last-change magit
                 org-mode puppet-mode smex highlight-symbol tabbar
                 undo-tree yasnippet fastnav rfringe flycheck
                 edit-server ledger-mode color-theme-solarized expand-region
                 key-chord pp-c-l yaml-mode multiple-cursors
-                ace-jump-mode clojure-mode s ac-nrepl cider
+                ace-jump-mode clojure-mode s cider
                 paredit rainbow-delimiters markdown-mode flx helm
-                ido-ubiquitous cl-lib git-modes jedi clang-complete-async
+                ido-ubiquitous cl-lib git-modes company-mode
                 )
        (mapcar 'el-get-source-name el-get-sources)))
 

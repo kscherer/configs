@@ -23,5 +23,3 @@
               (list "class" "^class *\\([a-z0-9_:]+\\)" 1)
               ))))
 
-;enable for puppet
-(add-to-list 'ac-modes 'puppet-mode)
