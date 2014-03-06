@@ -100,7 +100,7 @@ file corresponding to the current buffer file, then recompile the file."
 (add-hook 'sh-mode-hook 'kms:shell-mode-hook)
 (add-hook 'python-mode-hook 'kms:python-mode-hook)
 (add-hook 'ruby-mode-hook 'kms:default-mode-hook)
-(add-hook 'org-mode-hook 'kms:org-modes-hook)
+(add-hook 'org-mode-hook 'kms:org-mode-hook)
 (add-hook 'markdown-mode-hook 'kms:markdown-mode-hook)
 (add-hook 'clojure-mode-hook 'kms:clojure-mode-hook)
 (add-hook 'c++-mode-hook 'kms:cpp-mode-hook)
