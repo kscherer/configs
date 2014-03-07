@@ -5,8 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(ibuffer-expert t)
  '(sh-indent-comment t)
- '(tab-width 4)
- '(yas-snippet-dirs (quote ("~/.emacs.d/snippets")) nil (yasnippet)))
+ '(tab-width 4) )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
