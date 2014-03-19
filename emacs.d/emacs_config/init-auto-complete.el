@@ -32,12 +32,6 @@
 ;; expand full entry, not just common part
 (setq ac-expand-on-auto-complete nil)
 
-;disable auto-completion after certain words
-(add-hook 'sh-mode-hook
-          (lambda ()
-            (make-local-variable 'ac-ignores)
-            (add-to-list 'ac-ignores "fi")))
-
 (add-hook 'ruby-mode-hook
           (lambda ()
             (make-local-variable 'ac-ignores)
