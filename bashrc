@@ -283,6 +283,11 @@ function yblade() {
     ssh root@yow-blade$1
 }
 
+#remove stopped docker containers
+function drm() {
+    docker rm "$(docker ps -q -a)"
+}
+
 #prompt related functionality
 function setTruncatedPwd(){
     # append the last command to the history file
