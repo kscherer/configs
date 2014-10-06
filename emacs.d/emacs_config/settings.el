@@ -27,6 +27,9 @@
 (delete-selection-mode t)               ; region is replaced by text
 (setq browse-kill-ring-quit-action 'save-and-restore)
 
+;; force default for all modes
+(setq-default tab-width 4)
+
 ;make the y or n suffice for a yes or no question
 (fset 'yes-or-no-p 'y-or-n-p)
 

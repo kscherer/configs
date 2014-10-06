@@ -1,17 +1,15 @@
-(defadvice kill-ring-save (before slick-copy activate compile)
-  "When called interactively with no active region, copy a single line instead."
+
+;; Copied from http://www.emacswiki.org/emacs/WholeLineOrRegion
+(defun my-kill-ring-save (beg end flash)
   (interactive
-   (if mark-active (list (region-beginning) (region-end))
+   (if (use-region-p)
+       (list (region-beginning) (region-end) nil)
      (message "Copied line")
      (list (line-beginning-position)
-           (line-beginning-position 2)))))
+           (line-beginning-position 2) 'flash)))
+  (kill-ring-save beg end))
 
-(defadvice kill-region (before slick-cut activate compile)
-  "When called interactively with no active region, kill a single line instead."
-  (interactive
-   (if mark-active (list (region-beginning) (region-end))
-     (list (line-beginning-position)
-           (line-beginning-position 2)))))
+(global-set-key [remap kill-ring-save] 'my-kill-ring-save)
 
 (defadvice yank-pop (around kill-ring-browse-maybe (arg))
   "If last action was not a yank, run `browse-kill-ring' instead."
