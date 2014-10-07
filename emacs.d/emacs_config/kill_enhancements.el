@@ -11,6 +11,12 @@
 
 (global-set-key [remap kill-ring-save] 'my-kill-ring-save)
 
+(put 'kill-region 'interactive-form
+     '(interactive
+       (if (use-region-p)
+           (list (region-beginning) (region-end))
+         (list (line-beginning-position) (line-beginning-position 2)))))
+
 (defadvice yank-pop (around kill-ring-browse-maybe (arg))
   "If last action was not a yank, run `browse-kill-ring' instead."
   (if (not (eq last-command 'yank))
