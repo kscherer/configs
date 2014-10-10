@@ -1,1 +1,1 @@
-(color-theme-solarized-dark)
+(load-theme 'solarized-dark t)

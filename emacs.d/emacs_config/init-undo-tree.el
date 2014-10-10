@@ -1,3 +1,5 @@
 (global-undo-tree-mode)
 (global-set-key (kbd "C-z") 'undo-tree-undo)
 (global-set-key (kbd "C-S-z") 'undo-tree-redo)
+(setq undo-tree-visualizer-timestamps t)
+(setq undo-tree-visualizer-diff t)
