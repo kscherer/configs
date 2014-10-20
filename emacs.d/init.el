@@ -15,18 +15,16 @@
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(unless (require 'el-get nil t)
-  (url-retrieve
-   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-   (lambda (s)
-     (let (el-get-master-branch)
-       (goto-char (point-max))
-       (eval-print-last-sexp)))))
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
 
-(el-get 'sync)
-
-(setq el-get-user-package-directory "~/.emacs.d/emacs_config")
 (add-to-list 'el-get-recipe-path "~/.emacs.d/local_recipes")
+(setq el-get-user-package-directory "~/.emacs.d/emacs_config")
+(el-get 'sync)
 
 (setq my-packages
       (append
@@ -37,7 +35,7 @@
                 key-chord pp-c-l yaml-mode multiple-cursors
                 ace-jump-mode clojure-mode s cider
                 paredit rainbow-delimiters markdown-mode flx helm
-                ido-ubiquitous cl-lib git-modes jedi clang-complete-async
+                ido-ubiquitous cl-lib git-modes jedi
                 company-mode pymacs ropemacs
                 )
        (mapcar 'el-get-source-name el-get-sources)))
