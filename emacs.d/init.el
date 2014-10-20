@@ -36,7 +36,7 @@
                 ace-jump-mode clojure-mode s cider
                 paredit rainbow-delimiters markdown-mode flx helm
                 ido-ubiquitous cl-lib git-modes jedi
-                company-mode pymacs ropemacs
+                company-mode pymacs ropemacs org-reveal
                 )
        (mapcar 'el-get-source-name el-get-sources)))
 

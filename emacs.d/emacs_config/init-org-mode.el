@@ -47,5 +47,3 @@
 (defun my-org-confirm-babel-evaluate (lang body)
   (not (string= lang "plantuml")))
 (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
-
-(require 'ox-reveal)
