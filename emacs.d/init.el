@@ -26,52 +26,32 @@
 (setq el-get-user-package-directory "~/.emacs.d/emacs_config")
 (el-get 'sync)
 
-(setq my-packages
-      (append
-       '(el-get auto-complete autopair el-get goto-last-change magit
-                org-mode puppet-mode smex highlight-symbol tabbar
-                undo-tree yasnippet fastnav rfringe flycheck
-                edit-server ledger-mode color-theme-solarized expand-region
-                key-chord pp-c-l yaml-mode multiple-cursors
-                ace-jump-mode clojure-mode s cider
-                paredit rainbow-delimiters markdown-mode flx helm
-                ido-ubiquitous cl-lib git-modes jedi
-                company-mode pymacs ropemacs org-reveal
-                )
-       (mapcar 'el-get-source-name el-get-sources)))
-
-(el-get 'sync my-packages)
+(setq my:el-get-packages
+       '(auto-complete autopair goto-last-change
+         magit org-mode org-reveal
+         smex highlight-symbol tabbar
+         undo-tree yasnippet fastnav
+         rfringe flycheck puppet-mode
+         edit-server ledger-mode color-theme-solarized expand-region
+         key-chord pp-c-l yaml-mode multiple-cursors
+         ace-jump-mode clojure-mode s cider
+         paredit rainbow-delimiters markdown-mode flx helm
+         ido-ubiquitous cl-lib git-modes jedi
+         company-mode pymacs ropemacs
+         )
+       )
+(el-get 'sync my:el-get-packages)
 
 (setq custom-file "~/.emacs.d/emacs_config/custom.el")
 (load custom-file 'noerror)
 
-; need to add these to the path so that byte cache will work
+; my configuration files
 (add-to-list 'load-path "~/.emacs.d/emacs_config/")
 
-;; default emacs configuration directory
-(defconst kms:emacs-config-dir "/home/kscherer/.emacs.d/emacs_config/" "")
-
-;; utility finction to auto-load my package configurations
-(defun kms:load-config-file (filelist)
-  (dolist (file filelist)
-    (load (expand-file-name
-           (concat kms:emacs-config-dir file)))
-    (message "Loaded config file:%s" file)
-    ))
-
-;; load my configuration files
-(kms:load-config-file '(
-                        "settings.el"
-                        "open_line_config.el"
-                        "backup_config.el"
-                        "vi_emulation.el"
-                        "kill_enhancements.el"
-                        "tramp_config.el"
-                        "mode-hooks.el"
-                        "global-keys.el"
-                        "global_abbrev.el"
-                        "clean-mode-line.el"
-                        "ido-goto-symbol.el"
-                        "toggle-quotes.el"
-                        "hippie-setup.el"
-                        ))
+;; load my configuration files with load so elc gets picked up
+(mapc 'load '("settings" "open_line_config" "backup_config"
+              "vi_emulation" "kill_enhancements" "tramp_config"
+              "mode-hooks" "global-keys" "global_abbrev"
+              "clean-mode-line" "ido-goto-symbol" "toggle-quotes"
+              "hippie-setup"
+              ))
