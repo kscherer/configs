@@ -20,4 +20,3 @@
   (magit-refresh))
 
 (define-key magit-status-mode-map (kbd "W") 'magit-toggle-whitespace)
-(setq magit-commit-signoff t)

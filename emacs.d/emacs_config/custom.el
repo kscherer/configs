@@ -5,6 +5,9 @@
  ;; If there is more than one, they won't work right.
  '(blink-matching-delay 0.1)
  '(ibuffer-expert t)
+ '(magit-commit-ask-to-stage nil)
+ '(magit-save-some-buffers (quote dontask))
+ '(magit-stage-all-confirm nil)
  '(sh-indent-comment t)
  '(tab-width 4)
  '(vc-follow-symlinks t))
