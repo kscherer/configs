@@ -1,5 +1,4 @@
 (require 'ido)
-(require 'ido-ubiquitous)
 (require 'flx-ido)
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t
