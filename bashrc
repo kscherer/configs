@@ -275,17 +275,33 @@ servedir(){
 
 # Used to simplify logging into my vms
 function sshvm() {
-    num=$1
-    ssh root@yow-lpgbld-vm$num
+    ssh "root@yow-lpgbld-vm$1"
 }
 
 function yblade() {
-    ssh root@yow-blade$1
+    ssh "root@yow-blade$1"
+}
+
+function ablade() {
+    ssh "root@ala-blade$1"
 }
 
 #remove stopped docker containers
 function drm() {
     docker rm "$(docker ps -q -a)"
+}
+
+function mksh() {
+    if [ -z "$1" ] || [ -a "$1" ]; then
+        return 1
+    fi
+    {
+        echo '#!/bin/bash'
+        echo 'set -euo pipefail'
+        echo "IFS=$'\n\t'"
+        echo
+    } > "$1"
+    chmod +x "$1"
 }
 
 #prompt related functionality
@@ -418,14 +434,14 @@ function sshagent_init {
     if [ $AGENTFOUND = 0 ] ; then
         for agentsocket in $(sshagent_findsockets) ; do
             if [ $AGENTFOUND != 0 ] ; then break ; fi
-            if sshagent_testsocket $agentsocket ; then AGENTFOUND=1 ; fi
+            if sshagent_testsocket "$agentsocket" ; then AGENTFOUND=1 ; fi
         done
     fi
 
     # If at this point we still haven't located an agent, it's time to
     # start a new one
     if [ $AGENTFOUND = 0 ] ; then
-        eval `ssh-agent`
+        eval $(ssh-agent)
     fi
 
     # Clean up
@@ -441,19 +457,19 @@ alias sagent="sshagent_init"
 [ -f ~/.aliases ] && source ~/.aliases
 [ -f ~/.local-env ] && source ~/.local-env
 
-if [ $TERM = eterm-color ]; then
+if [ "$TERM" = eterm-color ]; then
     #Emacs ansi-term directory tracking
     # track directory, username, and cwd for remote logons
     function eterm-set-cwd {
-        $@
-        echo -e "\033AnSiTc" $(pwd)
+        "$@"
+        echo -e "\033AnSiTc" "$(pwd)"
     }
 
     # set hostname, user, and cwd
     function eterm-reset {
-        echo -e "\033AnSiTu" $(whoami)
-        echo -e "\033AnSiTc" $(pwd)
-        echo -e "\033AnSiTh" $(hostname)
+        echo -e "\033AnSiTu" "$(whoami)"
+        echo -e "\033AnSiTc" "$(pwd)"
+        echo -e "\033AnSiTh" "$(hostname)"
     }
 
     for temp in cd pushd popd; do
