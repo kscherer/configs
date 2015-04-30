@@ -4,6 +4,7 @@
   (whitespace-mode 1)
   (auto-revert-mode 1)
   (subword-mode 1)
+  (org-src-mode -1)
   )
 
 (defun kms:default-mode-hook ()

@@ -10,7 +10,6 @@
       ido-auto-merge-work-directories-length -1)
 
 (ido-mode t)
-(ido-ubiquitous-mode t)
 ;; smarter fuzzy matching for ido
 (flx-ido-mode t)
 ;; disable ido faces to see flx highlights

@@ -37,5 +37,4 @@
 (global-set-key (kbd "M-t p") 'transpose-params)
 
 ;; mimic vim j for join
-(global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1))) 
-
+(global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
