@@ -414,4 +414,10 @@ Else it is a user buffer."
   (interactive)
   (find-file (cdr (pop recently-closed-buffers)) ) )
 
+(defun tf-toggle-tab-width-setting ()
+  "Toggle setting tab widths between 4 and 8"
+  (interactive)
+  (setq tab-width (if (= tab-width 8) 4 8))
+  (redraw-display))
+
 (provide 'functions)
