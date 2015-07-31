@@ -304,6 +304,12 @@ function mksh() {
     chmod +x "$1"
 }
 
+# delete stopped containers and delete dangling images
+function dcleanup() {
+	docker rm $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
+	docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+}
+
 #prompt related functionality
 function setTruncatedPwd(){
     # append the last command to the history file
