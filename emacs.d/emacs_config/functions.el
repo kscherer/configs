@@ -1,6 +1,9 @@
-                                        ;-*- coding: utf-8 -*-
+;-*- coding: utf-8 -*-
 
-(delete-selection-mode 1) ; turn on text selection highlighting and make typing override selected text (Note: when delete-selection-mode is on, then transient-mark-mode is automatically on too.)
+; turn on text selection highlighting and make typing override
+; selected text (Note: when delete-selection-mode is on, then
+; transient-mark-mode is automatically on too.)
+(delete-selection-mode 1)
 
 (defun print-buffer-confirm ()
   "Print current buffer, but ask for confirmation first."
@@ -147,7 +150,7 @@ EOL chars by space when the EOL char is not inside string."
       (setq currentLineCharCount
             (progn
               (setq bds (bounds-of-thing-at-point 'line))
-              (length (buffer-substring-no-properties (car bds) (cdr bds)))    
+              (length (buffer-substring-no-properties (car bds) (cdr bds)))
               ;; Note: 'line includes eol if it is not buffer's last line
               )
             )
@@ -196,7 +199,9 @@ Calling this command 3 times will always result in no whitespaces around cursor.
         line-begin-pos line-end-pos
         )
     (save-excursion
-      ;; todo: might consider whitespace as defined by syntax table, and also consider whitespace chars in unicode if syntax table doesn't already considered it.
+      ;; todo: might consider whitespace as defined by syntax table,
+      ;; and also consider whitespace chars in unicode if syntax table
+      ;; doesn't already considered it.
       (setq cursor-point (point))
 
       (setq spaceTabNeighbor-p (if (or (looking-at " \\|\t") (looking-back " \\|\t")) t nil) )
@@ -377,7 +382,7 @@ Else it is a user buffer."
    (when (and (buffer-modified-p)
               (not emacsBuff-p)
               (not (string-equal major-mode "dired-mode"))
-              (if (equal (buffer-file-name) nil) 
+              (if (equal (buffer-file-name) nil)
                   (if (string-equal "" (save-restriction (widen) (buffer-string))) nil t)
                 t
                 )
