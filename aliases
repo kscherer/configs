@@ -45,7 +45,6 @@ alias ec='emacsclient --no-wait'
 alias ack='ack-grep'
 
 alias svi='sudo vi'
-alias xm='sudo xm'
 
 alias upgrade='sudo apt-get update && apt-get upgrade && apt-get clean'
 
@@ -56,12 +55,9 @@ alias et="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
 
 alias yow-mirror='ssh svc-mirror@yow-mirror'
 alias ala-mirror='ssh svc-mirror@ala-mirror'
+alias pek-mirror='ssh svc-mirror@pek-mirror'
 alias yow-puppet='ssh root@yow-lpd-puppet2'
 alias ala-puppet='ssh root@ala-lpd-puppet'
+alias pek-puppet='ssh root@pek-lpd-puppet'
 
 alias pat='puppet agent --test'
-
-#from http://blog.stefanxo.com/2014/02/clean-up-after-docker/
-alias dockercleancontainers="docker ps -a -notrunc| grep 'Exit' | awk '{print \$1}' | xargs -L 1 -r docker rm"
-alias dockercleanimages="docker images -a -notrunc | grep none | awk '{print \$3}' | xargs -L 1 -r docker rmi"
-alias dockerclean="dockercleancontainers && dockercleanimages"
