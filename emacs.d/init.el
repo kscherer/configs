@@ -36,7 +36,7 @@
          key-chord pp-c-l yaml-mode multiple-cursors
          ace-jump-mode clojure-mode s cider
          paredit rainbow-delimiters markdown-mode flx helm
-         queue cl-lib git-modes jedi
+         queue cl-lib jedi
          company-mode pymacs ropemacs
          )
        )
