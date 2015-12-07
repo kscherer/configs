@@ -286,9 +286,16 @@ function ablade() {
     ssh "root@ala-blade$1"
 }
 
+function pblade() {
+    ssh "root@pek-blade$1"
+}
+
 #remove stopped docker containers
 function drm() {
-    docker rm "$(docker ps -q -a)"
+    local exited_containers=$(docker ps --filter status=exited -q 2>/dev/null)
+    if [ -n "$exited_containers" ]; then
+	    docker rm "$exited_containers"
+    fi
 }
 
 function mksh() {
@@ -306,8 +313,11 @@ function mksh() {
 
 # delete stopped containers and delete dangling images
 function dcleanup() {
-	docker rm $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
-	docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+    local orphaned_images=$(docker images --filter dangling=true -q 2>/dev/null)
+    if [ -n "$orphaned_images" ]; then
+	    docker rmi "$orphaned_images"
+    fi
+
 }
 
 #prompt related functionality
