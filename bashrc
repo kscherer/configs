@@ -292,9 +292,9 @@ function pblade() {
 
 #remove stopped docker containers
 function drm() {
-    local exited_containers=$(docker ps --filter status=exited -q 2>/dev/null)
-    if [ -n "$exited_containers" ]; then
-	    docker rm "$exited_containers"
+    local exited_containers=($(docker ps --filter status=exited -q 2>/dev/null))
+    if [ ${#exited_containers[@]} -ne 0 ]; then
+	    docker rm ${exited_containers[*]}
     fi
 }
 
@@ -313,9 +313,9 @@ function mksh() {
 
 # delete stopped containers and delete dangling images
 function dcleanup() {
-    local orphaned_images=$(docker images --filter dangling=true -q 2>/dev/null)
-    if [ -n "$orphaned_images" ]; then
-	    docker rmi "$orphaned_images"
+    local orphaned_images=($(docker images --filter dangling=true -q 2>/dev/null))
+    if [ ${#orphaned_images[@]} -ne 0 ]; then
+	    docker rmi ${orphaned_images[*]}
     fi
 
 }
