@@ -351,9 +351,6 @@ Emacs buffers are those whose name starts with *."
 Works in Microsoft Windows and Mac OS X."
   (interactive)
   (cond
-   ((string-equal system-type "windows-nt")
-    (w32-shell-execute "explore"
-                       (replace-regexp-in-string "/" "\\" default-directory t t)))
    ((string-equal system-type "darwin") (shell-command "open ."))
    ((string-equal system-type "gnu/linux") (shell-command "xdg-open ."))
    ) )
@@ -424,5 +421,15 @@ Else it is a user buffer."
   (interactive)
   (setq tab-width (if (= tab-width 8) 4 8))
   (redraw-display))
+
+(defun just-one-space-in-region (beg end)
+  "replace all whitespace in the region with single spaces"
+  (interactive "r")
+  (save-excursion
+    (save-restriction
+      (narrow-to-region beg end)
+      (goto-char (point-min))
+      (while (re-search-forward "\\s-+" nil t)
+        (replace-match " ")))))
 
 (provide 'functions)
