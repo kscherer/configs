@@ -317,7 +317,14 @@ function dcleanup() {
     if [ ${#orphaned_images[@]} -ne 0 ]; then
 	    docker rmi ${orphaned_images[*]}
     fi
+}
 
+# delete dangling volumes
+function vcleanup() {
+    local dangling_volumes=($(docker volume ls -f dangling=true | grep -v DRIVER | cut -d ' ' -f 15-))
+    if [ ${#dangling_volumes[@]} -ne 0 ]; then
+	    docker volume rm ${dangling_volumes[*]}
+    fi
 }
 
 #prompt related functionality
