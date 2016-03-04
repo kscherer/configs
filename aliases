@@ -61,3 +61,5 @@ alias ala-puppet='ssh root@ala-lpd-puppet'
 alias pek-puppet='ssh root@pek-lpd-puppet'
 
 alias pat='puppet agent --test'
+alias di='docker images'
+alias dps='docker ps -a'

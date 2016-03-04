@@ -327,6 +327,10 @@ function vcleanup() {
     fi
 }
 
+function dockip() {
+    docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
+}
+
 #prompt related functionality
 function setTruncatedPwd(){
     # append the last command to the history file
