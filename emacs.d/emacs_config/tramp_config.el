@@ -1,5 +1,6 @@
 (setq tramp-default-user "kscherer")
 (setq tramp-default-method "ssh")
+(setq tramp-auto-save-directory "~/.emacs.d/backup")
 
 ;; (defun my-mode-line-function ()
 ;;   "change face of modeline if editing a file as root"
