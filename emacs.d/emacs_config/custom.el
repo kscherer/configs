@@ -8,6 +8,10 @@
  '(magit-commit-ask-to-stage nil)
  '(magit-save-some-buffers (quote dontask))
  '(magit-stage-all-confirm nil)
+ '(safe-local-variable-values
+   (quote
+    ((project-venv-name . "wraxl_env")
+     (flycheck-checker . pylint))))
  '(sh-indent-comment t)
  '(tab-width 4)
  '(vc-follow-symlinks t))

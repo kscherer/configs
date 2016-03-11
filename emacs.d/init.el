@@ -24,7 +24,6 @@
 
 (add-to-list 'el-get-recipe-path "~/.emacs.d/local_recipes")
 (setq el-get-user-package-directory "~/.emacs.d/emacs_config")
-(el-get 'sync)
 
 (setq my:el-get-packages
        '(auto-complete autopair goto-last-change
@@ -36,8 +35,8 @@
          key-chord pp-c-l yaml-mode multiple-cursors
          ace-jump-mode clojure-mode s cider
          paredit rainbow-delimiters markdown-mode flx helm
-         queue cl-lib jedi
-         company-mode pymacs ropemacs
+         queue cl-lib jedi virtualenvwrapper
+         company-mode pymacs
          )
        )
 (el-get 'sync my:el-get-packages)
