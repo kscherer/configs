@@ -16,6 +16,7 @@
 [wrgit]
     username = kscherer
     autoupdate = true
+	addons = wr-secure,wr-common,wr-ovp,wr-ovp-ovirt,wr-cgp
 [color]
     ui = true
 [alias]
