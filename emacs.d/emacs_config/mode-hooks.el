@@ -76,10 +76,6 @@ file corresponding to the current buffer file, then recompile the file."
   (setq autopair-handle-action-fns
         (list #'autopair-default-handle-action
               #'autopair-python-triple-quote-action))
-  (add-hook 'python-mode-hook (lambda ()
-                                (hack-local-variables)
-                                (when (boundp 'project-venv-name)
-                                  (venv-workon project-venv-name))))
   )
 
 (defun kms:cpp-mode-hook ()
