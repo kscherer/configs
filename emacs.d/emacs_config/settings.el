@@ -1,4 +1,3 @@
-
 (require 'functions)
 
 ;; UTF-8 as default encoding
@@ -331,6 +330,14 @@ User buffers are those whose name does not start with *."
 (setq whitespace-style (quote (face tabs tabs-mark trailing lines-tail)))
 (set-face-foreground 'whitespace-tab "red4")
 
-;; (let ((d (make-display-table)))
-;;   (aset d 9 (vector ?> ?· ?· ?· ))
-;;   (set-window-display-table nil d))
+;; http://endlessparentheses.com/faster-pop-to-mark-command.html
+(setq set-mark-command-repeat-pop t)
+(defun modi/multi-pop-to-mark (orig-fun &rest args)
+  "Call ORIG-FUN until the cursor moves.
+  Try the repeated popping up to 10 times."
+  (let ((p (point)))
+    (dotimes (i 10)
+      (when (= p (point))
+        (apply orig-fun args)))))
+
+(advice-add 'pop-to-mark-command :around #'modi/multi-pop-to-mark)
