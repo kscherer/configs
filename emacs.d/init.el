@@ -36,7 +36,7 @@
          ace-jump-mode clojure-mode s cider
          paredit rainbow-delimiters markdown-mode flx helm
          queue cl-lib jedi virtualenvwrapper
-         company-mode pymacs beacon
+         company-mode pymacs beacon hungry-delete
          )
        )
 (el-get 'sync my:el-get-packages)
