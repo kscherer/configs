@@ -9,8 +9,6 @@
     suppresscc = all
 [commit]
     signoff = true
-[format]
-    signoff = true
 [help]
     autocorrect = 1
 [wrgit]
