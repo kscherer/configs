@@ -33,7 +33,7 @@
          rfringe flycheck puppet-mode
          edit-server ledger-mode color-theme-solarized expand-region
          key-chord pp-c-l yaml-mode multiple-cursors
-         ace-jump-mode clojure-mode s cider
+         avy clojure-mode s cider
          paredit rainbow-delimiters markdown-mode flx helm
          queue cl-lib jedi virtualenvwrapper
          company-mode pymacs beacon hungry-delete
