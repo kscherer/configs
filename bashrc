@@ -279,15 +279,15 @@ function sshvm() {
 }
 
 function yblade() {
-    ssh "root@yow-blade$1"
+    ssh "root@yow-blade$1.wrs.com"
 }
 
 function ablade() {
-    ssh "root@ala-blade$1"
+    ssh "root@ala-blade$1.wrs.com"
 }
 
 function pblade() {
-    ssh "root@pek-blade$1"
+    ssh "root@pek-blade$1.wrs.com"
 }
 
 #remove stopped docker containers

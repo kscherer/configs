@@ -53,12 +53,12 @@ alias yow-git-init='if [ ! -d bin ] ; then git clone git://yow-git.wrs.com/git/b
 alias yow-git-clone='wrgit clone git://yow-git.wrs.com/git/wrlinux-x'
 alias et="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
 
-alias yow-mirror='ssh svc-mirror@yow-mirror'
-alias ala-mirror='ssh svc-mirror@ala-mirror'
-alias pek-mirror='ssh svc-mirror@pek-mirror'
-alias yow-puppet='ssh root@yow-lpd-puppet2'
-alias ala-puppet='ssh root@ala-lpd-puppet'
-alias pek-puppet='ssh root@pek-lpd-puppet'
+alias yow-mirror='ssh svc-mirror@yow-mirror.wrs.com'
+alias ala-mirror='ssh svc-mirror@ala-mirror.wrs.com'
+alias pek-mirror='ssh svc-mirror@pek-mirror.wrs.com'
+alias yow-puppet='ssh root@yow-lpd-puppet2.wrs.com'
+alias ala-puppet='ssh root@ala-lpd-puppet.wrs.com'
+alias pek-puppet='ssh root@pek-lpd-puppet.wrs.com'
 
 alias pat='puppet agent --test'
 alias di='docker images'
