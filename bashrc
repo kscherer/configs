@@ -384,11 +384,11 @@ function setPrompt() {
     fi
 
     local TIME="$BRO[\A]"
-    local PATH_WITH_ERRORCODE="\$(selectColor \$? '$LBL' '$RED')\$newPWD"
+    local PATH_WITH_ERRORCODE="\$(selectColor \$? '$BLU' '$RED')\$newPWD"
 
     if fn_exists __git_ps1; then
         export GIT_PS1_SHOWDIRTYSTATE=true
-        local GIT_BRANCH="\$(__git_ps1 ' ${LCY}%s')"
+        local GIT_BRANCH="\$(__git_ps1 ' ${CYA}%s')"
     fi
 
     local USER="\$(selectColor '$UID' '$RED' '$GRE')\u"
