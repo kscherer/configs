@@ -481,6 +481,16 @@ function sshagent_init {
 
 alias sagent="sshagent_init"
 
+# If connecting over ssh, attempt to connect to ssh-agent
+if [ -n "$SSH_CLIENT" ]; then
+    sshagent_init &> /dev/null
+fi
+
+# According to this blog post, setting TZ prevents system calls at the
+# expense of requiring app restart if TZ changes
+# https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/
+export TZ=":/etc/localtime"
+
 [ -f ~/.aliases ] && source ~/.aliases
 [ -f ~/.local-env ] && source ~/.local-env
 
