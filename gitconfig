@@ -24,7 +24,21 @@
     amend = commit --amend -C HEAD
 	please = push --force-with-lease
 	commend = commit --amend --no-edit
+    prune = fetch --prune
+    undo = reset --soft HEAD^
+    stash-all = stash save --include-untracked
 [core]
 	pager = less -x1,5
 [push]
 	default = simple
+[merge]
+    ff = only
+    conflictstyle = diff3
+[status]
+    showUntrackedFiles = all
+[diff]
+  tool = icdiff
+[difftool]
+  prompt = false
+[difftool "icdiff"]
+  cmd = /usr/bin/icdiff --line-numbers $LOCAL $REMOTE
