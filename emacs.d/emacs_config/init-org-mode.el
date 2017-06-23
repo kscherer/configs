@@ -5,6 +5,8 @@
 (setq org-indent-indentation-per-level 1)
 (setq org-agenda-files (file-expand-wildcards "~/.emacs.d/org/*.org"))
 
+(setq org-html-validation-link nil)
+
 ;; (add-hook 'org-mode-hook
 ;;           (lambda ()
 ;;             (org-set-local 'yas-trigger-key [tab])
