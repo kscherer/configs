@@ -529,12 +529,6 @@ fi
 export PROMPT_COMMAND=setTruncatedPwd
 setPrompt
 
-# if virtualenvwrapper has been installed in local user path do the setup
-fn_exists workon
-if [ "$?" != "0" ] && [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
-    source ~/.local/bin/virtualenvwrapper.sh
-fi
-
 if [[ ! "${PATH}" =~ $HOME/bin ]]; then
     export PATH="$HOME/bin:${PATH}"
 fi
