@@ -31,9 +31,6 @@
 	pager = less -x1,5
 [push]
 	default = simple
-[merge]
-    ff = only
-    conflictstyle = diff3
 [status]
     showUntrackedFiles = all
 [diff]
