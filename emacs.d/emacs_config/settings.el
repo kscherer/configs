@@ -40,7 +40,7 @@
 (setq diff-switches "-u")
 
 ;; make emacs use the clipboard
-(setq x-select-enable-clipboard t)
+(setq select-enable-clipboard t)
 
 ;; Transparently open compressed files
 (auto-compression-mode t)

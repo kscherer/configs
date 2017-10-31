@@ -5,7 +5,7 @@
   (interactive "p")
   (end-of-line)
   (open-line arg)
-  (next-line 1)
+  (forward-line 1)
   (when newline-and-indent
     (indent-according-to-mode)))
 

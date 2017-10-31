@@ -1,5 +1,6 @@
 ;; Turn off mouse interface early in startup to avoid momentary display
-(set-default-font "Noto Mono-10")
+
+(set-frame-font "Noto Mono-10")
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -34,13 +35,15 @@
          rfringe flycheck puppet-mode
          edit-server ledger-mode color-theme-solarized expand-region
          key-chord pp-c-l yaml-mode multiple-cursors
-         avy clojure-mode s cider which-key
-         paredit rainbow-delimiters markdown-mode flx helm
-         queue cl-lib jedi virtualenvwrapper
-         company-mode pymacs beacon hungry-delete
+         avy clojure-mode s which-key
+         rainbow-delimiters markdown-mode flx
+         queue cl-lib jedi swiper
+         company-mode beacon
          )
        )
 (el-get 'sync my:el-get-packages)
+
+(package-initialize)
 
 (setq custom-file "~/.emacs.d/emacs_config/custom.el")
 (load custom-file 'noerror)

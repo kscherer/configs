@@ -8,6 +8,7 @@
  '(magit-commit-ask-to-stage nil)
  '(magit-save-some-buffers (quote dontask))
  '(magit-stage-all-confirm nil)
+ '(package-selected-packages (quote (queue let-alist)))
  '(safe-local-variable-values
    (quote
     ((project-venv-name . "wraxl_env")

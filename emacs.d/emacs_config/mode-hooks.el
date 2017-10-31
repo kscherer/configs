@@ -4,7 +4,6 @@
   (whitespace-mode 1)
   (auto-revert-mode 1)
   (subword-mode 1)
-  (hungry-delete-mode 1)
   )
 
 (defun kms:default-mode-hook ()
@@ -65,7 +64,6 @@ file corresponding to the current buffer file, then recompile the file."
 
 (defun kms:clojure-mode-hook ()
   (kms:base-minor-modes-hook)
-  (paredit-mode 1)
   (rainbow-delimiters-mode 1)
   )
 
