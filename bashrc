@@ -331,6 +331,25 @@ function dockip() {
     docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
 }
 
+function dex() {
+    if [ -z "$1" ]; then
+        echo "Need to specify running container"
+        exit 1
+    fi
+    docker inspect "$1" &> /dev/null
+    if [ "$?" != "0" ]; then
+        echo "Cannot exec into $1"
+        exit 1
+    fi
+    declare -a CMD
+    if [ -z "$2" ]; then
+        CMD=(/bin/bash)
+    else
+        CMD=($@)
+    fi
+    docker exec -it -u 0 "$1" "${CMD[@]}"
+}
+
 #prompt related functionality
 function setTruncatedPwd(){
     # append the last command to the history file
