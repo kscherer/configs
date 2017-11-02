@@ -37,7 +37,7 @@
          key-chord pp-c-l yaml-mode multiple-cursors
          avy clojure-mode s which-key
          rainbow-delimiters markdown-mode flx
-         queue cl-lib jedi swiper
+         queue let-alist cl-lib jedi swiper
          company-mode beacon
          )
        )
