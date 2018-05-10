@@ -1,6 +1,7 @@
 [user]
     name = Konrad Scherer
     email = Konrad.Scherer@windriver.com
+    #email = kmscherer@gmail.com
 [diff]
     renamelimit = 0
 [sendemail]
@@ -31,8 +32,6 @@
 	pager = less -x1,5
 [push]
 	default = simple
-[status]
-    showUntrackedFiles = all
 [diff]
   tool = icdiff
 [difftool]

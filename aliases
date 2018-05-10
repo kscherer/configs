@@ -46,7 +46,7 @@ alias ack='ack-grep'
 
 alias svi='sudo vi'
 
-alias upgrade='sudo apt-get update && apt-get upgrade && apt-get clean'
+alias upgrade='sudo apt update && sudo aptitude full-upgrade && sudo apt autoremove && sudo apt autoclean'
 
 ## Ottawa git
 alias yow-git-init='if [ ! -d bin ] ; then git clone git://yow-git.wrs.com/git/bin ; fi ; (cd bin ; ./wrgit pull) ; export PATH=`pwd`/bin:$PATH;'

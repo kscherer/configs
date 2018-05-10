@@ -343,7 +343,7 @@ function dex() {
     fi
     declare -a CMD
     if [ -z "$2" ]; then
-        CMD=(/bin/bash)
+        CMD=(/bin/bash -c "stty rows $(tput lines) cols $(tput cols) && export TERM=$TERM && exec bash -li")
     else
         CMD=($@)
     fi
