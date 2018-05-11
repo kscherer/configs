@@ -8,6 +8,18 @@
  '(magit-commit-ask-to-stage nil)
  '(magit-save-some-buffers (quote dontask))
  '(magit-stage-all-confirm nil)
+ '(org-structure-template-alist
+   (quote
+    (("a" . "export ascii")
+     ("c" . "center")
+     ("C" . "comment")
+     ("e" . "example")
+     ("E" . "export")
+     ("h" . "export html")
+     ("l" . "export latex")
+     ("q" . "quote")
+     ("s" . "src")
+     ("v" . "verse"))))
  '(package-selected-packages (quote (gl-conf-mode queue let-alist)))
  '(safe-local-variable-values (quote ((flycheck-checker . pylint))))
  '(sh-indent-comment t)

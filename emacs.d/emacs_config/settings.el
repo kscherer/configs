@@ -25,6 +25,7 @@
 (setq inhibit-startup-screen t)
 (delete-selection-mode t)               ; region is replaced by text
 (setq browse-kill-ring-quit-action 'save-and-restore)
+(setq load-prefer-newer t)  ; ignore older .elc files
 
 ;; force default for all modes
 (setq-default tab-width 4)

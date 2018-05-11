@@ -22,3 +22,5 @@
 (defun my-org-confirm-babel-evaluate (lang body)
   (not (or (string= lang "ditaa") (string= lang "ditaa"))))
 (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
+
+(require 'org-tempo)
