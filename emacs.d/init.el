@@ -39,6 +39,7 @@
          rainbow-delimiters markdown-mode flx
          queue let-alist cl-lib jedi swiper
          company-mode beacon
+         go-mode go-company go-eldoc
          )
        )
 (el-get 'sync my:el-get-packages)

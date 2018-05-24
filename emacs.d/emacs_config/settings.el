@@ -26,8 +26,9 @@
 (delete-selection-mode t)               ; region is replaced by text
 (setq browse-kill-ring-quit-action 'save-and-restore)
 (setq load-prefer-newer t)  ; ignore older .elc files
+(setq initial-scratch-message nil)
 
-(setq cua-prefix-override-inhibit-delay 1.0)
+;(setq cua-prefix-override-inhibit-delay 1.0)
 
 ;; force default for all modes
 (setq-default tab-width 4)

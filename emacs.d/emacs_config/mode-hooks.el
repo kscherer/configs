@@ -1,6 +1,7 @@
 
 (defun kms:base-minor-modes-hook ()
-  (cua-mode 1)
+  (cua-mode 0)
+  (local-set-key (kbd "C-v" ) 'cua-paste)
   (whitespace-mode 1)
   (auto-revert-mode 1)
   (subword-mode 1)
@@ -101,6 +102,25 @@ file corresponding to the current buffer file, then recompile the file."
   (visual-line-mode 1)
   )
 
+;; go get -u github.com/nsf/gocode
+;; go get -u github.com/rogpeppe/godef
+;; go get -u golang.org/x/tools/cmd/goimports
+;; go get -u github.com/jstemmer/gotags
+(defun kms:go-mode-hook ()
+  (kms:base-minor-modes-hook)
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (add-to-list 'company-backends 'company-go)
+  (company-mode 1)
+  (local-set-key (kbd "<C-tab>" ) 'company-complete)
+  (hl-line-mode 1)
+  (visual-line-mode 1)
+  (yas-minor-mode 1)
+  (autopair-mode 1)
+  (highlight-symbol-mode 1)
+  (flycheck-mode 1)
+  (go-eldoc-setup)
+  )
+
 (add-hook 'emacs-lisp-mode-hook 'kms:emacs-lisp-mode-hook)
 (add-hook 'puppet-mode-hook 'kms:puppet-mode-hook)
 (add-hook 'sh-mode-hook 'kms:shell-mode-hook)
@@ -110,5 +130,6 @@ file corresponding to the current buffer file, then recompile the file."
 (add-hook 'markdown-mode-hook 'kms:markdown-mode-hook)
 (add-hook 'clojure-mode-hook 'kms:clojure-mode-hook)
 (add-hook 'c++-mode-hook 'kms:cpp-mode-hook)
+(add-hook 'go-mode-hook 'kms:go-mode-hook)
 
 (provide 'mode-hooks)
