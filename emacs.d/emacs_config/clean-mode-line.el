@@ -1,8 +1,7 @@
 ; Copied from http://www.masteringemacs.org/articles/2012/09/10/hiding-replacing-modeline-strings/
 
 (defvar mode-line-cleaner-alist
-  '((auto-complete-mode . " α")
-    (company-mode . " C")
+  '((company-mode . " C")
     (yas-minor-mode . " υ")
     (paredit-mode . " π")
     (eldoc-mode . "")

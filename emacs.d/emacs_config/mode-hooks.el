@@ -9,20 +9,17 @@
 
 (defun kms:default-mode-hook ()
   (kms:base-minor-modes-hook)
-  (auto-complete-mode 1)
-  (local-set-key (kbd "<C-tab>" ) 'auto-complete)
   (hl-line-mode 1)
   (visual-line-mode 1)
   (yas-minor-mode 1)
-  (setq ac-sources (append '(ac-source-yasnippet) ac-sources))
   (autopair-mode 1)
   (highlight-symbol-mode 1)
+  (company-mode 1)
+  (local-set-key (kbd "<C-tab>" ) 'company-complete)
   )
 
 (defun kms:markdown-mode-hook ()
   (kms:base-minor-modes-hook)
-  (auto-complete-mode 1)
-  (local-set-key (kbd "<C-tab>" ) 'auto-complete)
   (visual-line-mode 1)
   (autopair-mode 1)
   (flyspell-mode 1)
@@ -45,8 +42,7 @@
 (defun kms:shell-mode-hook ()
   (kms:default-mode-hook)
   (flycheck-mode 1)
-  (make-local-variable 'ac-ignores)
-  (add-to-list 'ac-ignores "fi")
+  (set (make-local-variable 'company-backends) '((company-capf company-dabbrev company-yasnippet)))
   )
 
 (defun auto-byte-recompile ()
@@ -61,6 +57,7 @@ file corresponding to the current buffer file, then recompile the file."
   (kms:default-mode-hook)
   (flycheck-mode 1)
   (add-hook 'after-save-hook 'auto-byte-recompile)
+  (rainbow-delimiters-mode 1)
   )
 
 (defun kms:clojure-mode-hook ()
@@ -72,6 +69,8 @@ file corresponding to the current buffer file, then recompile the file."
   (kms:default-mode-hook)
   (flycheck-mode 1)
   (jedi:setup)
+  (set (make-local-variable 'company-backends)
+       '((company-jedi company-keywords company-capf company-dabbrev-code company-yasnippet)))
   (setq autopair-handle-action-fns
         (list #'autopair-default-handle-action
               #'autopair-python-triple-quote-action))
@@ -80,6 +79,7 @@ file corresponding to the current buffer file, then recompile the file."
 (defun kms:cpp-mode-hook ()
   (kms:default-mode-hook)
   (flycheck-mode 1)
+  (c-mode)
   ; style I want to use in c++ mode
   (c-add-style "kms-style"
                '("stroustrup"
@@ -90,16 +90,13 @@ file corresponding to the current buffer file, then recompile the file."
   (auto-fill-mode)
   (c-toggle-electric-state -1)
   (c-toggle-auto-hungry-state 1)
-  (setq ac-sources '(ac-source-clang-async))
-  (ac-clang-launch-completion-process)
   )
 
 (defun kms:org-mode-hook ()
   (kms:base-minor-modes-hook)
-  (auto-complete-mode 1)
-  (local-set-key (kbd "<C-tab>" ) 'auto-complete)
   (flyspell-mode 1)
   (visual-line-mode 1)
+  (yas-minor-mode 1)
   )
 
 ;; go get -u github.com/nsf/gocode

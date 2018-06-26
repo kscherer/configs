@@ -23,4 +23,4 @@
   (not (or (string= lang "ditaa") (string= lang "ditaa"))))
 (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
 
-(require 'org-tempo)
+;(require 'org-tempo)

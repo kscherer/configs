@@ -28,7 +28,7 @@
 (setq el-get-user-package-directory "~/.emacs.d/emacs_config")
 
 (setq my:el-get-packages
-       '(auto-complete autopair goto-last-change
+       '(autopair goto-last-change
          magit org-mode org-reveal
          smex highlight-symbol tabbar
          undo-tree yasnippet fastnav
@@ -37,8 +37,8 @@
          key-chord pp-c-l yaml-mode multiple-cursors
          avy clojure-mode s which-key
          rainbow-delimiters markdown-mode flx
-         queue let-alist cl-lib jedi swiper
-         company-mode beacon
+         queue let-alist cl-lib jedi-core swiper
+         company-mode beacon company-jedi
          go-mode go-company go-eldoc
          )
        )
