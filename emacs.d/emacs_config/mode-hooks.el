@@ -118,6 +118,11 @@ file corresponding to the current buffer file, then recompile the file."
   (go-eldoc-setup)
   )
 
+(defun kms:groovy-mode-hook ()
+  (kms:default-mode-hook)
+  (flycheck-mode 1)
+  )
+
 (add-hook 'emacs-lisp-mode-hook 'kms:emacs-lisp-mode-hook)
 (add-hook 'puppet-mode-hook 'kms:puppet-mode-hook)
 (add-hook 'sh-mode-hook 'kms:shell-mode-hook)
@@ -128,5 +133,6 @@ file corresponding to the current buffer file, then recompile the file."
 (add-hook 'clojure-mode-hook 'kms:clojure-mode-hook)
 (add-hook 'c++-mode-hook 'kms:cpp-mode-hook)
 (add-hook 'go-mode-hook 'kms:go-mode-hook)
+(add-hook 'groovy-mode-hook 'kms:groovy-mode-hook)
 
 (provide 'mode-hooks)
