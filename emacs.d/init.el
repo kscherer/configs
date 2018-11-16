@@ -39,7 +39,9 @@
          rainbow-delimiters markdown-mode flx
          queue let-alist cl-lib jedi-core swiper
          company-mode beacon company-jedi
+         company-quickhelp pos-tip
          go-mode go-company go-eldoc
+         auto-complete popup ; not used but needed by jedi autoloads
          )
        )
 (el-get 'sync my:el-get-packages)

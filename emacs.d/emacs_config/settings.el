@@ -27,6 +27,8 @@
 (setq browse-kill-ring-quit-action 'save-and-restore)
 (setq load-prefer-newer t)  ; ignore older .elc files
 (setq initial-scratch-message nil)
+(setq split-height-threshold nil) ; favor spliting screen vertically
+(setq split-width-threshold 160)
 
 ;(setq cua-prefix-override-inhibit-delay 1.0)
 

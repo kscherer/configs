@@ -65,15 +65,30 @@ file corresponding to the current buffer file, then recompile the file."
   (rainbow-delimiters-mode 1)
   )
 
+;; If python-shell-virtualenv-root is set (perhaps using .dir-locals.el) when
+;; flycheck is loaded it will search the virtualenv for python, pylint and flake8
+(defun flycheck-virtualenv-executable-find (executable)
+  "Find an EXECUTABLE in the current virtualenv if any."
+  (if (bound-and-true-p python-shell-virtualenv-root)
+      (let ((exec-path (python-shell-calculate-exec-path)))
+        (executable-find executable))
+    (executable-find executable)))
+
+(defun flycheck-virtualenv-setup ()
+  "Setup Flycheck for the current virtualenv."
+  (setq-local flycheck-executable-find #'flycheck-virtualenv-executable-find))
+
 (defun kms:python-mode-hook ()
   (kms:default-mode-hook)
   (flycheck-mode 1)
-  (jedi:setup)
-  (set (make-local-variable 'company-backends)
-       '((company-jedi company-keywords company-capf company-dabbrev-code company-yasnippet)))
+  (flycheck-virtualenv-setup)
   (setq autopair-handle-action-fns
         (list #'autopair-default-handle-action
               #'autopair-python-triple-quote-action))
+  (add-to-list 'company-backends 'company-jedi)
+  (company-quickhelp-mode 1) ; enable help popups
+  (setq jedi:tooltip-method nil) ; show method info in minibuffer
+  (jedi-mode)
   )
 
 (defun kms:cpp-mode-hook ()
@@ -88,8 +103,8 @@ file corresponding to the current buffer file, then recompile the file."
 
   (c-set-style "kms-style")        ; use my-style defined above
   (auto-fill-mode)
-  (c-toggle-electric-state -1)
-  (c-toggle-auto-hungry-state 1)
+  ;(c-toggle-electric-state -1)
+  ;(c-toggle-auto-hungry-state 1)
   )
 
 (defun kms:org-mode-hook ()

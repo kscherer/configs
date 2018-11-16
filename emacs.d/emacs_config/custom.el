@@ -20,8 +20,15 @@
      ("q" . "quote")
      ("s" . "src")
      ("v" . "verse"))))
- '(package-selected-packages (quote (gl-conf-mode queue let-alist)))
- '(safe-local-variable-values (quote ((flycheck-checker . pylint))))
+ '(package-selected-packages (quote (go-mode f gl-conf-mode queue let-alist)))
+ '(safe-local-variable-values
+   (quote
+    ((eval progn
+           (setq python-shell-virtualenv-root
+                 (concat
+                  (locate-dominating-file default-directory dir-locals-file)
+                  "/.venv")))
+     (encoding . utf-8))))
  '(sh-indent-comment t)
  '(tab-width 4)
  '(vc-follow-symlinks t))
