@@ -46,11 +46,8 @@ alias ack='ack-grep'
 
 alias svi='sudo vi'
 
-alias upgrade='sudo apt update && sudo aptitude full-upgrade && sudo apt autoremove && sudo apt autoclean'
+alias upgrade='sudo apt update && sudo aptitude full-upgrade && sudo apt -y autoremove && sudo apt -y autoclean'
 
-## Ottawa git
-alias yow-git-init='if [ ! -d bin ] ; then git clone git://yow-git.wrs.com/git/bin ; fi ; (cd bin ; ./wrgit pull) ; export PATH=`pwd`/bin:$PATH;'
-alias yow-git-clone='wrgit clone git://yow-git.wrs.com/git/wrlinux-x'
 alias et="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
 
 alias yow-mirror='ssh svc-mirror@yow-mirror.wrs.com'

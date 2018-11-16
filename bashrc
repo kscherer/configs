@@ -256,15 +256,6 @@ function mcd() {
     mkdir -p "$1" && cd "$1";
 }
 
-# Add sudo to last command or current commands
-function s() {
-    if [[ $# == 0 ]]; then
-        sudo $(history -p '!!')
-    else
-        sudo "$@"
-    fi
-}
-
 servedir(){
     port=8080
     if [ "$1" -gt 70 ]; then
