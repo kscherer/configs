@@ -29,7 +29,7 @@
 (defun kms:align-string-equals ()
   (interactive)
   (if (region-active-p)
-      (align-string (region-beginning) (region-end) "=" 1)
+      (align (region-beginning) (region-end))
     )
   )
 

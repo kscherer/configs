@@ -41,6 +41,7 @@
          company-mode beacon company-jedi
          company-quickhelp pos-tip
          go-mode go-company go-eldoc
+         browse-kill-ring
          auto-complete popup ; not used but needed by jedi autoloads
          )
        )
