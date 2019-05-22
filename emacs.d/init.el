@@ -29,7 +29,7 @@
 
 (setq my:el-get-packages
        '(autopair goto-last-change
-         magit org-mode org-reveal
+         magit ghub org-mode org-reveal
          smex highlight-symbol tabbar
          undo-tree yasnippet fastnav
          rfringe flycheck puppet-mode

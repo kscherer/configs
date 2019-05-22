@@ -196,6 +196,11 @@ function sshhostrm()
     for arg in "$@"
     do
         ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$arg"
+        ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$arg".wrs.com
+        local IP=$(host -t A "$arg".wrs.com | cut -d' ' -f 4)
+        if [ "${IP:0:3}" == '147' ] || [ "${IP:0:3}" == '128' ]; then
+            ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$IP"
+        fi
     done
 }
 
