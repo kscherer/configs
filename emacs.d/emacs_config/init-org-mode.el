@@ -14,5 +14,5 @@
 (require 'ob-ditaa)
 (setq org-plantuml-jar-path "/home/kscherer/bin/plantuml.jar")
 (defun my-org-confirm-babel-evaluate (lang body)
-  (not (or (string= lang "ditaa") (string= lang "ditaa"))))
+  (not (or (string= lang "plantuml") (string= lang "ditaa"))))
 (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
