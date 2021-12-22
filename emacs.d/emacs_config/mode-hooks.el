@@ -62,6 +62,7 @@ file corresponding to the current buffer file, then recompile the file."
 
 (defun kms:clojure-mode-hook ()
   (kms:base-minor-modes-hook)
+  (autopair-mode 1)
   (rainbow-delimiters-mode 1)
   )
 
@@ -82,18 +83,34 @@ file corresponding to the current buffer file, then recompile the file."
   (kms:default-mode-hook)
   (flycheck-mode 1)
   (flycheck-virtualenv-setup)
+
   (setq autopair-handle-action-fns
         (list #'autopair-default-handle-action
               #'autopair-python-triple-quote-action))
-  (add-to-list 'company-backends 'company-jedi)
+
+  (require 'dap-mode)
+  (require 'dap-ui)
+  (require 'dap-python)
+  (dap-mode 1)
+  (dap-ui-mode 1)
+  ;; enables mouse hover support
+  (dap-tooltip-mode 1)
+  ;; use tooltips for mouse hover
+  ;; if it is not enabled `dap-mode' will use the minibuffer.
+  (tooltip-mode 1)
+
+  (require 'lsp-python-ms)
+  (lsp)
+  (add-to-list 'company-backends 'company-lsp)
+  (company-mode 1)
   (company-quickhelp-mode 1) ; enable help popups
-  (setq jedi:tooltip-method nil) ; show method info in minibuffer
-  (jedi-mode)
+  (tree-sitter-hl-mode)
   )
 
 (defun kms:cpp-mode-hook ()
   (kms:default-mode-hook)
   (flycheck-mode 1)
+  (autopair-mode 1)
   (c-mode)
   ; style I want to use in c++ mode
   (c-add-style "kms-style"
@@ -103,8 +120,13 @@ file corresponding to the current buffer file, then recompile the file."
 
   (c-set-style "kms-style")        ; use my-style defined above
   (auto-fill-mode)
-  ;(c-toggle-electric-state -1)
-  ;(c-toggle-auto-hungry-state 1)
+  (require 'ccls)
+  (setq ccls-sem-highlight-method 'font-lock)
+  (lsp)
+  (add-to-list 'company-backends 'company-lsp)
+  (company-mode 1)
+  (company-quickhelp-mode 1) ; enable help popups
+  (tree-sitter-hl-mode)
   )
 
 (defun kms:org-mode-hook ()
@@ -131,11 +153,20 @@ file corresponding to the current buffer file, then recompile the file."
   (highlight-symbol-mode 1)
   (flycheck-mode 1)
   (go-eldoc-setup)
+  (tree-sitter-hl-mode)
   )
 
 (defun kms:groovy-mode-hook ()
   (kms:default-mode-hook)
   (flycheck-mode 1)
+  )
+
+(defun kms:terraform-mode-hook ()
+  (kms:default-mode-hook)
+  (terraform-mode)
+  (require 'company-terraform)
+  (company-terraform-init)
+  (company-quickhelp-mode 1) ; enable help popups
   )
 
 (add-hook 'emacs-lisp-mode-hook 'kms:emacs-lisp-mode-hook)
@@ -149,5 +180,9 @@ file corresponding to the current buffer file, then recompile the file."
 (add-hook 'c++-mode-hook 'kms:cpp-mode-hook)
 (add-hook 'go-mode-hook 'kms:go-mode-hook)
 (add-hook 'groovy-mode-hook 'kms:groovy-mode-hook)
+(add-hook 'terraform-mode-hook 'kms:terraform-mode-hook)
+
+(add-hook 'after-save-hook
+          'executable-make-buffer-file-executable-if-script-p)
 
 (provide 'mode-hooks)

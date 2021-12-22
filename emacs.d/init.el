@@ -1,5 +1,3 @@
-;; Turn off mouse interface early in startup to avoid momentary display
-
 (set-frame-font "Noto Mono-10")
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -28,25 +26,61 @@
 (setq el-get-user-package-directory "~/.emacs.d/emacs_config")
 
 (setq my:el-get-packages
-       '(autopair goto-last-change
-         magit ghub org-mode org-reveal
-         smex highlight-symbol tabbar
-         undo-tree yasnippet fastnav
-         rfringe flycheck puppet-mode
-         edit-server ledger-mode color-theme-solarized expand-region
-         key-chord pp-c-l yaml-mode multiple-cursors
-         avy clojure-mode s which-key
-         rainbow-delimiters markdown-mode flx
-         queue let-alist cl-lib jedi-core swiper
-         company-mode beacon company-jedi
-         company-quickhelp pos-tip
-         go-mode go-company go-eldoc
-         browse-kill-ring
-         auto-complete popup ; not used but needed by jedi autoloads
-         )
-       )
+      '(autopair
+        goto-last-change
+        magit
+        highlight-symbol
+        tabbar
+        undo-tree
+        browse-kill-ring
+        yasnippet
+        rfringe
+        flycheck
+
+        ;; language modes
+        puppet-mode
+        yaml-mode
+        clojure-mode cider sesman
+        go-mode go-company go-eldoc
+        ledger-mode
+        markdown-mode
+        org-mode
+        org-reveal
+        terraform-mode
+        hcl-mode
+
+        edit-server
+        color-theme-solarized
+        expand-region
+        key-chord
+        pp-c-l
+        avy s which-key
+        rainbow-delimiters
+        queue let-alist cl-lib
+        company-mode beacon
+        company-quickhelp pos-tip
+        company-prescient
+        lsp-mode lsp-ui ccls lsp-python-ms
+        dap-mode
+        all-the-icons
+        doom-modeline
+        ace-window
+        consult consult-flycheck consult-lsp
+        prescient
+        selectrum selectrum-prescient
+        tree-sitter tree-sitter-indent tree-sitter-langs
+        ;;swiper
+        ;;fastnav
+        ;;smex
+        ;;flx
+        ;;multiple-cursors
+        )
+      )
 (el-get 'sync my:el-get-packages)
 
+(require 'el-get-elpa)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
 (setq custom-file "~/.emacs.d/emacs_config/custom.el")

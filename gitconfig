@@ -38,3 +38,7 @@
   prompt = false
 [difftool "icdiff"]
   cmd = /usr/bin/icdiff --line-numbers $LOCAL $REMOTE
+[pull]
+	ff = only
+[init]
+	defaultBranch = main

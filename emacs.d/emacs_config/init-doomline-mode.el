@@ -1,0 +1,6 @@
+(setq doom-modeline-height 15)
+(setq doom-modeline-minor-modes t)
+(setq doom-modeline-icon t)
+(setq doom-modeline-major-mode-color-icon t)
+(setq doom-modeline-height 15)
+(doom-modeline-mode 1)

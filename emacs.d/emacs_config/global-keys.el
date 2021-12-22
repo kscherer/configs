@@ -14,8 +14,10 @@
 (global-set-key (kbd "M-h") 'backward-delete-char-untabify)
 (global-set-key (kbd "M-H") 'subword-backward-kill)
 
-(global-set-key (kbd "C-o") 'move-cursor-next-pane)
-(global-set-key (kbd "C-O") 'move-cursor-previous-pane)
+;(global-set-key (kbd "C-o") 'move-cursor-next-pane)
+;(global-set-key (kbd "C-O") 'move-cursor-previous-pane)
+(global-set-key (kbd "C-o") 'ace-window)
+(global-set-key (kbd "C-O") 'ace-window)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
@@ -27,7 +29,7 @@
 (global-set-key (kbd "<f1>") 'help-command)
 
 ;; Jump to a definition in the current file.
-(global-set-key (kbd "C-c i") 'counsel-imenu)
+;(global-set-key (kbd "C-c i") 'counsel-imenu)
 
 ;; Transpose stuff with M-t
 (global-unset-key (kbd "M-t")) ;; which used to be transpose-words
@@ -38,3 +40,8 @@
 
 ;; mimic vim j for join
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
+
+;; Use DWIM functions instead of defaults
+(global-set-key (kbd "M-u") 'upcase-dwim)
+(global-set-key (kbd "M-l") 'downcase-dwim)
+(global-set-key (kbd "M-c") 'capitalize-dwim)

@@ -30,6 +30,8 @@
 (setq split-height-threshold nil) ; favor spliting screen vertically
 (setq split-width-threshold 160)
 
+(setq view-read-only t) ; use view mode keybindings on all read only buffers
+
 ;(setq cua-prefix-override-inhibit-delay 1.0)
 
 ;; force default for all modes
@@ -334,6 +336,7 @@ User buffers are those whose name does not start with *."
 
 (require 'whitespace)
 (setq whitespace-style (quote (face tabs tabs-mark trailing lines-tail)))
+(setq whitespace-line-column 100)
 (set-face-foreground 'whitespace-tab "red4")
 
 ;; http://endlessparentheses.com/faster-pop-to-mark-command.html

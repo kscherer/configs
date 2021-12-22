@@ -60,3 +60,60 @@ alias pek-puppet='ssh root@pek-lpd-puppet.wrs.com'
 alias pat='puppet agent --test'
 alias di='docker images'
 alias dps='docker ps -a'
+
+# kubectl and aws-vault aliases
+if command -v kubectl &> /dev/null; then
+    # shellcheck disable=SC1090
+    source <(kubectl completion bash)
+
+    alias k=kubectl
+    complete -F __start_kubectl k
+
+    alias kdevadm='aws-vault exec devstar-east-admin -- kubectl --context arn:aws:eks:us-east-2:853502460716:cluster/DevStar-USEast2-VPC-01-EKS-01 '
+    complete -F __start_kubectl kdevsadm
+
+    alias kdev='aws-vault exec devstar-east -- kubectl --context arn:aws:eks:us-east-2:853502460716:cluster/DevStar-USEast2-VPC-01-EKS-01 '
+    complete -F __start_kubectl kdev
+
+    alias ktrain='kubectl --context arn:aws:eks:us-west-2:200877267758:cluster/WRAI-Training-USWest2-VPC-01-EKS-03 '
+    complete -F __start_kubectl ktrain
+
+    alias kpreview='kubectl --context arn:aws:eks:us-west-2:861272747003:cluster/WRAI-Private-Preview-USWest2-VPC-01-EKS-01 '
+    complete -F __start_kubectl kpreview
+
+    alias ktest='aws-vault exec devstar-east -- kubectl --context arn:aws:eks:us-west-2:853502460716:cluster/DevStar-USWest2-VPC-01-EKS-06 '
+    complete -F __start_kubectl ktest
+fi
+
+if command -v microk8s &> /dev/null; then
+    alias kubectl=microk8s.kubectl
+    # shellcheck disable=SC1090
+    source <(microk8s.kubectl completion bash)
+    complete -F __start_kubectl microk8s.kubectl
+fi
+
+if command -v k9s &> /dev/null; then
+    alias k9sdev='k9s --context arn:aws:eks:us-east-2:853502460716:cluster/DevStar-USEast2-VPC-01-EKS-01'
+    alias k9strain='k9s --context arn:aws:eks:us-west-2:200877267758:cluster/WRAI-Training-USWest2-VPC-01-EKS-03'
+    alias k9spreview='k9s --context arn:aws:eks:us-west-2:861272747003:cluster/WRAI-Private-Preview-USWest2-VPC-01-EKS-01'
+    alias k9stest='k9s --context arn:aws:eks:us-west-2:853502460716:cluster/DevStar-USWest2-VPC-01-EKS-06'
+fi
+
+if command -v aws &> /dev/null; then
+    complete -C "$HOME/bin/aws_completer" aws
+fi
+
+if command -v fzf &> /dev/null; then
+    source /usr/share/doc/fzf/examples/key-bindings.bash
+    source /usr/share/doc/fzf/examples/completion.bash
+fi
+
+if command -v pack &> /dev/null; then
+    # shellcheck disable=SC1090
+    . $(pack completion)
+fi
+
+if command -v minikube &> /dev/null; then
+    # shellcheck disable=SC1090
+    source <(minikube completion bash)
+fi

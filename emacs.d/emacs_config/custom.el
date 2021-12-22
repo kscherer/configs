@@ -4,13 +4,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-matching-delay 0.1)
+ '(fill-column 76)
  '(ibuffer-expert t)
  '(magit-commit-ask-to-stage nil)
- '(magit-save-some-buffers (quote dontask))
+ '(magit-save-some-buffers 'dontask)
  '(magit-stage-all-confirm nil)
  '(org-structure-template-alist
-   (quote
-    (("a" . "export ascii")
+   '(("a" . "export ascii")
      ("c" . "center")
      ("C" . "comment")
      ("e" . "example")
@@ -19,16 +19,19 @@
      ("l" . "export latex")
      ("q" . "quote")
      ("s" . "src")
-     ("v" . "verse"))))
- '(package-selected-packages (quote (go-mode f gl-conf-mode queue let-alist)))
+     ("v" . "verse")))
+ '(package-selected-packages
+   '(tsc prescient selectrum consult company pfuture go-mode f gl-conf-mode queue let-alist))
+ '(plantuml-default-exec-mode 'jar)
+ '(plantuml-jar-path "/home/kscherer/bin/plantuml.jar")
  '(safe-local-variable-values
-   (quote
-    ((eval progn
+   '((eval progn
            (setq python-shell-virtualenv-root
                  (concat
                   (locate-dominating-file default-directory dir-locals-file)
                   "/.venv")))
-     (encoding . utf-8))))
+     (encoding . utf-8)))
+ '(selectrum-show-indices t)
  '(sh-indent-comment t)
  '(tab-width 4)
  '(vc-follow-symlinks t))
