@@ -23,3 +23,4 @@ ln -s $PWD/emacs.d/emacs_config $HOME/.emacs.d/
 ln -s $PWD/emacs.d/packages $HOME/.emacs.d/
 ln -s $PWD/emacs.d/org $HOME/.emacs.d/
 ln -s $PWD/emacs.d/init.el $HOME/.emacs.d/init.el
+ln -s $PWD/emacs.d/snippets $HOME/.emacs.d/

@@ -9,6 +9,9 @@
 ;; enable exporters for org-mode
 (setq org-export-backends (quote (beamer html)))
 
+;; enable templates like <e to insert begin_example block
+(require 'org-tempo)
+
 ;; enable plantuml babel backend
 (require 'ob-plantuml)
 (require 'ob-ditaa)

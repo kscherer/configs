@@ -22,6 +22,18 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+
+(require 'el-get-elpa)
+   ;; Build the El-Get copy of the package.el packages if we have not
+   ;; built it before.  Will have to look into updating later ...
+   (unless (file-directory-p el-get-recipe-path-elpa)
+       (package-refresh-contents)
+       (el-get-elpa-build-local-recipes))
+
 (add-to-list 'el-get-recipe-path "~/.emacs.d/local_recipes")
 (setq el-get-user-package-directory "~/.emacs.d/emacs_config")
 
@@ -40,14 +52,15 @@
         ;; language modes
         puppet-mode
         yaml-mode
-        clojure-mode cider sesman
-        go-mode go-company go-eldoc
+        clojure-mode cider
+        go-mode go-eldoc
         ledger-mode
         markdown-mode
         org-mode
         org-reveal
         terraform-mode
         hcl-mode
+        groovy-mode
 
         edit-server
         color-theme-solarized
@@ -60,7 +73,7 @@
         company-mode beacon
         company-quickhelp pos-tip
         company-prescient
-        lsp-mode lsp-ui ccls lsp-python-ms
+        lsp-mode lsp-ui lsp-python-ms
         dap-mode
         all-the-icons
         doom-modeline
@@ -78,11 +91,6 @@
       )
 (el-get 'sync my:el-get-packages)
 
-(require 'el-get-elpa)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
-
 (setq custom-file "~/.emacs.d/emacs_config/custom.el")
 (load custom-file 'noerror)
 
@@ -94,5 +102,5 @@
               "vi_emulation" "kill_enhancements" "tramp_config"
               "mode-hooks" "global-keys" "global_abbrev"
               "clean-mode-line" "ido-goto-symbol" "toggle-quotes"
-              "hippie-setup"
+              "hippie-setup" "company-go"
               ))

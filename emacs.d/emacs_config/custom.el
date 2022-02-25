@@ -25,7 +25,10 @@
  '(plantuml-default-exec-mode 'jar)
  '(plantuml-jar-path "/home/kscherer/bin/plantuml.jar")
  '(safe-local-variable-values
-   '((eval progn
+   '((groovy-indent-offset . 2)
+     (python-mode
+      (lsp-python-ms-python-executable . ".venv/bin/python"))
+     (eval progn
            (setq python-shell-virtualenv-root
                  (concat
                   (locate-dominating-file default-directory dir-locals-file)
@@ -34,6 +37,7 @@
  '(selectrum-show-indices t)
  '(sh-indent-comment t)
  '(tab-width 4)
+ '(undo-tree-history-directory-alist '(("." . "/home/kscherer/.emacs.d/undo-tree")))
  '(vc-follow-symlinks t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

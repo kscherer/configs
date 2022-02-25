@@ -350,3 +350,7 @@ User buffers are those whose name does not start with *."
         (apply orig-fun args)))))
 
 (advice-add 'pop-to-mark-command :around #'modi/multi-pop-to-mark)
+
+;; recommended for lsp-mode
+(setq gc-cons-threshold 20000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb

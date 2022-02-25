@@ -42,7 +42,7 @@
 (defun kms:shell-mode-hook ()
   (kms:default-mode-hook)
   (flycheck-mode 1)
-  (set (make-local-variable 'company-backends) '((company-capf company-dabbrev company-yasnippet)))
+  (set (make-local-variable 'company-backends) '((company-yasnippet company-capf company-dabbrev-code)))
   )
 
 (defun auto-byte-recompile ()
@@ -142,6 +142,7 @@ file corresponding to the current buffer file, then recompile the file."
 ;; go get -u github.com/jstemmer/gotags
 (defun kms:go-mode-hook ()
   (kms:base-minor-modes-hook)
+  (require 'company-go)
   (add-hook 'before-save-hook 'gofmt-before-save)
   (add-to-list 'company-backends 'company-go)
   (company-mode 1)

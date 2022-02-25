@@ -12,7 +12,7 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 export HISTSIZE=5000
 export HISTFILESIZE=2000
-export HISTIGNORE="ls:ll:[bf]g:exit:history*:hg*:cd:push*:pop*:reset:a:z:q:l:reset"
+export HISTIGNORE="ls:ll:[bf]g:exit:history*:cd:push*:pop*:reset:a:z:q:l:reset"
 export HISTTIMEFORMAT="%d/%m/%y %T "
 
 #fix up spelling mistakes
@@ -178,7 +178,7 @@ function fn_exists()
 }
 
 #search through all the per tty history files
-function hg() { grep "$1" ~/.history/*; }
+function hg() { grep -v '^#' ~/.history/* | grep "$1"; }
 
 #full process grep
 function pg() {

@@ -11,6 +11,9 @@
   (setq company-frontends
         '(company-pseudo-tooltip-unless-just-one-frontend
           company-preview-frontend
-          company-echo-metadata-frontend))
-  (setq company-require-match 'never)
+          company-echo-metadata-frontend)
+        company-format-margin-function #'company-vscode-dark-icons-margin
+        company-backends '(company-capf :with company-yasnippet)
+        company-require-match 'never
+        )
   )
